@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 @PropertySource(value = "classpath:application.yml", encoding = "utf-8", factory = YamlPropertyResourceFactory.class)
 @ConfigurationProperties(prefix = "scheduled-config")
 public class SaveLogDataTask {
+    public static final String SALT = "bigdata";
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -107,7 +108,7 @@ public class SaveLogDataTask {
 
             //初始化解密机器（by org.jasypt）
             BasicTextEncryptor standardPBEStringEncryptor = new BasicTextEncryptor();
-            standardPBEStringEncryptor.setPassword("bigdata");
+            standardPBEStringEncryptor.setPassword(SALT);
 
             //获取sftp
             SFTPUtil sftpUtilInstance = SFTPUtil.getSFTPUtilInstance(hostName, SFTP_PORT, hostUser, standardPBEStringEncryptor.decrypt(slaveEncryptHostPassword));
