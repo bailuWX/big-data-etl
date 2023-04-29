@@ -30,7 +30,7 @@ CREATE TABLE `etl_log_keyword`  (
   `HOST_NAME` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '子服务主机ip',
   `PORT` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '子服务主机端口',
   PRIMARY KEY (`KEY_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '数据开发_日志关键字' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件归档数据，已经根据关键字智能归档' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of etl_log_keyword
@@ -48,7 +48,7 @@ CREATE TABLE `etl_log_keyword_match`  (
   `KEY_TYPE` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1' COMMENT '关键字类型：1-历史日志关键字，2-shell组件错误关键字，3-shell组件忽略错误关键字，4-sql组件错误关键字',
   `SYSTEM_ID` int(11) NULL DEFAULT NULL COMMENT '系统id',
   PRIMARY KEY (`KEY_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '数据开发_日志关键字' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '关键字，逐行读取文件，分析每一行文本的依据' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of etl_log_keyword_match
