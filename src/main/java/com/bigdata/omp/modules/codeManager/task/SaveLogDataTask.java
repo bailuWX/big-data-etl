@@ -1,6 +1,7 @@
 package com.bigdata.omp.modules.codeManager.task;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.bigdata.omp.config.SaveLogConfig;
 import com.bigdata.omp.config.YamlPropertyResourceFactory;
@@ -103,8 +104,11 @@ public class SaveLogDataTask {
             String hostUser = rSlave.getHostUser();
             //子服务ssh加密的密钥-需要解密
             String slaveEncryptHostPassword = rSlave.getHostPassword();
-            //解密机器（by org.jasypt）
+
+            //初始化解密机器（by org.jasypt）
             BasicTextEncryptor standardPBEStringEncryptor = new BasicTextEncryptor();
+            standardPBEStringEncryptor.setPassword("bigdata");
+
             //获取sftp
             SFTPUtil sftpUtilInstance = SFTPUtil.getSFTPUtilInstance(hostName, SFTP_PORT, hostUser, standardPBEStringEncryptor.decrypt(slaveEncryptHostPassword));
 
@@ -122,9 +126,13 @@ public class SaveLogDataTask {
             } catch (Exception e) {
                 logger.error("找不到源文件名,或名称错误 " + fileName, e);
             }
+            //生成uuid来区分不同的文件
+            String simpleUUID = IdUtil.simpleUUID();
 
             //本地缓存文件的名称
-            saveFileName = fileName.concat(".id-").concat(String.valueOf(idSlave)).concat("-").concat(hostName).concat(".temp");
+            saveFileName = fileName.concat(".id-").concat(String.valueOf(idSlave))
+                    .concat("-").concat(hostName).concat(".").concat(simpleUUID).
+                    concat(".temp");
 
             //本地缓存文件的绝对路径
             saveFile = saveLogConfig.getSaveFileDirectory().concat(saveFileName);
@@ -179,7 +187,7 @@ public class SaveLogDataTask {
                                     try {
                                         saveLogDataService.saveLogData(etlLogKeyword);
                                     } catch (Exception e) {
-                                        logger.error("文件解析成功,但归档入库失败" , e);
+                                        logger.error("文件解析成功,但归档入库失败", e);
                                     }
                                 }
                             }
@@ -219,7 +227,7 @@ public class SaveLogDataTask {
      */
     private String getFileName(String port) {
         if (!StrUtil.isEmpty(port)) {
-            
+
             String fileName;
             String path = saveLogConfig.getPath();
 
