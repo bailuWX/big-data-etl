@@ -1,0 +1,27 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.tydic.omp.config.SaveLogConfig",
+      "name": "savelog-properties",
+      "type": "com.tydic.omp.config.SaveLogConfig"
+    },
+    {
+      "sourceType": "com.tydic.omp.modules.codeManager.task.SaveLogDataTask",
+      "name": "scheduled-config",
+      "type": "com.tydic.omp.modules.codeManager.task.SaveLogDataTask"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.tydic.omp.config.SaveLogConfig",
+      "name": "savelog-properties.path",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.tydic.omp.config.SaveLogConfig",
+      "name": "savelog-properties.save-file-directory",
+      "type": "java.lang.String"
+    }
+  ]
+}

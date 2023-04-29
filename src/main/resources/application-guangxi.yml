@@ -1,0 +1,127 @@
+server:
+  port: 8899
+  #设置tomcat文件上传临时存放目录
+  tomcat:
+    basedir: /home/web/omp/tmpfile
+spring:
+  #数据源连接池默认使用的是HikariCP
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://91.4.0.194:3306/gx_etl?useUnicode=true&characterEncoding=utf-8
+    username: ddk
+    password: ddK_0928
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-timeout: 30000
+      idle-timeout: 30000
+#  redis:
+#    #    cluster:
+#    #      nodes: 192.168.129.101:6381,192.168.129.101:6382,192.168.129.102:6383,192.168.129.102:6384,192.168.129.103:6385,192.168.129.103:6386
+#    host: 192.168.129.116
+#    port: 6389
+#    lettuce:
+#      pool:
+#        min-idle: 0
+#        max-idle: 8
+#        max-active: 8
+#        max-wait: -1ms
+    # redis密码认证
+#    password: Xzdx456&
+#  #兼容vscode开发取消热部署
+#  thymeleaf:
+#    cache: false
+#  devtools:
+#    restart:
+#      enabled: false
+#
+##日志上传配置
+#bigdata:
+#  auth:
+#    sys-id: 998
+#    key: bigdata
+#    #管理中心地址
+#    manager-url: http://192.168.129.116:8100/aop-service-manager
+#    #系统日志记录工程地址：
+#    syslog-url: http://192.168.129.116:8100/aop-service-syslog
+#    #redis key有效期，毫秒，默认8小时（28800000ms）
+#    redis-key-expire-time: 28800000
+#    # cookies有效期，单位：秒，默认8小时
+#    cookie-expire-time: 28800
+#  dap:
+#    #公用属性
+#    common:
+#      authorization:
+#        api: bigdata_AUTH auth_key=0628c777-b870-489f-beeb-226845d11fa5;from=111
+#        sysapi: bigdata_AUTH_SYS sys_id=109;sign=A3B89D25019337CF773B7983104EB42F;timestamp=1537512135908
+#      # 环境标识，0：本地（省份环境） 1:省专区 2: 集团生产 3：公司环境
+#      user-flag: 0
+#      api:
+#        # 查询项目成员列表接口地址
+#        query-project-user-list: http://192.168.129.116:8100/aop-service-project/api/user
+#  log:
+#    #是否持久化日志，只有显示的设置该值为0才不会持久化日志
+#    enableLogPersist: 0
+#
+#config-properties:
+#  #vscode
+#  proxyUrlPrefix: http://192.168.129.116:8100
+#  vscodeProxyaddress: vscode
+#  #k8s连接配置
+#  k8sStorageConfigPath: ./config90
+#  k8sConfigPath:  ./config90
+#  #项目根目录
+#  webideProRootPath: /home/webide/workspace/project/
+#  #动态存储class名称：
+#  dynamicGlusterStorageClassName: dynamic-ceph-rdb-127
+#  #绑定ingress，class名称：
+#  ingressClass: ingress
+#  #是否设置cpu、gpu标签
+#  IsSetCpuAndGpuLabel: true
+#  #设置选择安装ceph主机的node
+#  IsSetCephSelectedLabel: false
+#  #接入容器平台
+#  isAccessContainerPlatform: false
+#  k8sNamespace: webide
+#  containerPlatformAppId: a187184516
+#  volumeGlusterfsRootPath: models
+#  #ingress对外暴露ip
+#  ingressExportIp: 192.168.129.90
+#  #ingress对外暴露端口
+#  ingressExportPort: 32080
+#  #ingress对外暴露url前缀
+#  ingressExportUrlPrefix: http://192.168.129.90:32080/
+#  #k8s svc、pod内部暴露端口列表
+#  k8sInnerExportPorts:
+#  - 8899
+#  - 8080
+#  - 8081
+#  - 8082
+#  - 8083
+#  #vscode pod的端口
+#  vscodeExportPort: 8899
+#
+#gitlab-properties:
+#  #测试环境
+#  host: http://192.168.129.142
+#  token : 7cQ1uPSu7zJxg7cwpSmp
+#  #演示环境
+##  host: http://192.168.129.147
+##  token : MY2cFSEGRaNyGLGEiV-S
+#  #模板文件路径前缀
+#  template-dir-path: ./
+#
+#devops-properties:
+#   host: http://192.168.129.120:8099
+#   wsObject : 26216751830138880
+#   #webIde监控链接
+#   dmpHost: http://192.168.129.120:9080
+#   dmpPath: /dmp-service/api/v1/monitorData/getMonitorData?ws=
+#   dmpWsObject: 26216751830138880
+#   #webIde容器命名空间id
+#   dmpWs: 26216751830138880
+
+savelog-properties:
+  saveFileDirectory: /home/web/omp/tmpfile/work/Tomcat/localhost/webIde-api/
+  prefix: nohup.
+  suffix: .out
