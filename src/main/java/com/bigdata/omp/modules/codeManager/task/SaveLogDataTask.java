@@ -1,6 +1,7 @@
 package com.bigdata.omp.modules.codeManager.task;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import com.bigdata.omp.config.SaveLogConfig;
 import com.bigdata.omp.config.YamlPropertyResourceFactory;
 import com.bigdata.omp.modules.codeManager.model.EtlLogKeyword;
@@ -9,7 +10,7 @@ import com.bigdata.omp.modules.codeManager.model.RSlave;
 import com.bigdata.omp.modules.codeManager.service.SaveLogDataService;
 import com.bigdata.omp.util.BigMappedByteBufferReader;
 import com.bigdata.omp.util.SFTPUtil;
-import com.bigdata.omp.util.StringUtils;
+import org.jasypt.util.text.BasicTextEncryptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,9 +103,10 @@ public class SaveLogDataTask {
             String hostUser = rSlave.getHostUser();
             //子服务ssh加密的密钥-需要解密
             String slaveEncryptHostPassword = rSlave.getHostPassword();
+            //解密机器（by org.jasypt）
+            BasicTextEncryptor standardPBEStringEncryptor = new BasicTextEncryptor();
             //获取sftp
-//需要解密    SFTPUtil sftpUtilInstance = SFTPUtil.getSFTPUtilInstance(hostName, SFTP_PORT, hostUser, EncryptorUtil.decrypt(slaveEncryptHostPassword));
-            SFTPUtil sftpUtilInstance = SFTPUtil.getSFTPUtilInstance(hostName, SFTP_PORT, hostUser, slaveEncryptHostPassword);
+            SFTPUtil sftpUtilInstance = SFTPUtil.getSFTPUtilInstance(hostName, SFTP_PORT, hostUser, standardPBEStringEncryptor.decrypt(slaveEncryptHostPassword));
 
             //获取子服务启动占用端口号和文件的存放大致位置
             String port = rSlave.getPort();
@@ -216,7 +218,8 @@ public class SaveLogDataTask {
      * @return String
      */
     private String getFileName(String port) {
-        if (!StringUtils.isEmpty(port)) {
+        if (!StrUtil.isEmpty(port)) {
+            
             String fileName;
             String path = saveLogConfig.getPath();
 

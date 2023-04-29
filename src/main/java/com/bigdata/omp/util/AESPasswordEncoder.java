@@ -99,7 +99,7 @@ public class AESPasswordEncoder{
 		String enc = AESPasswordEncoder.ecryptJs("5541855");
 
 		System.out.println(enc);
-		enc = "Ø£\u008CW¡mÀ\u008FË\u0093í¸À";
+		enc = "Ã\u008E\u0089T²~Ê\u0099\u008DUé´é´";
 		String des = AESPasswordEncoder.decryptJs(enc);
 		System.out.println(des);
 	}

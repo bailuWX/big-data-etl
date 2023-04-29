@@ -19,7 +19,7 @@ spring:
     url: jdbc:mysql://192.168.2.199:3307/etl?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     username: root
     #    password: mysql
-    password: ENC(EBPlyHsaZGb7vFOCbPuDyQ==)
+    password: ENC(0nZwcqOCPYWL6+0KyJhyGg==)
     hikari:
       minimum-idle: 5
       maximum-pool-size: 15
@@ -35,5 +35,11 @@ savelog-properties:
 scheduled-config:
   #cron: 0 0 1 * * ?
   cron: "*/5 * * * * ?"
+
+
+#数据库密码脱敏的盐
+jasypt:
+  encryptor:
+    password: bigdata
 
 

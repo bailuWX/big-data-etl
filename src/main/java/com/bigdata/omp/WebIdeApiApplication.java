@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
 /**
- * Created by hhhhhh
+ * Created by bl
  */
 
 @EnableScheduling // 开启定时任务功能

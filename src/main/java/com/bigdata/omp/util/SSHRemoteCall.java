@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
+import cn.hutool.core.util.StrUtil;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
@@ -328,10 +329,6 @@ public class SSHRemoteCall {
      *
      * @param directory
      *            要列出的目录
-     * @param sftp
-     * @return
-     * @throws SftpException
-     * @throws JSchException
      */
     public List<String> getSftpPathList(String directory) throws JSchException, SftpException {
         List<String> fileList = new ArrayList<>();
@@ -354,7 +351,7 @@ public class SSHRemoteCall {
                     if(".".equals(filename) || "..".equals(filename)){
                         continue;
                     }
-                    if(!StringUtils.isEmpty(filename)){
+                    if(!StrUtil.isEmpty(filename)){
                         fileList.add(filename);
                     }
                 }

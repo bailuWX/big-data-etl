@@ -1,5 +1,6 @@
 package com.bigdata.omp.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.jcraft.jsch.*;
 import com.jcraft.jsch.ChannelSftp.LsEntry;
 import org.apache.commons.io.FileUtils;
@@ -290,7 +291,7 @@ public class SFTPHandler {
      * @return String
      */
     private String getRealFilePath(String downloadFile, String realFileName) {
-        if (!StringUtils.isEmpty(downloadFile)) {
+        if (!StrUtil.isEmpty(downloadFile)) {
             return downloadFile.substring(0, downloadFile.indexOf(realFileName));
         }
 
@@ -305,7 +306,7 @@ public class SFTPHandler {
      * @param downloadFile downloadFile
      */
     private String getRealFileName(String downloadFile) {
-        if (!StringUtils.isEmpty(downloadFile)) {
+        if (!StrUtil.isEmpty(downloadFile)) {
             String[] strings = downloadFile.split("/");
             return strings[strings.length - 1];
         }

@@ -9,7 +9,7 @@ import org.jasypt.util.text.BasicTextEncryptor;
  * 切勿删除!!!!!!!
  */
 @Slf4j
-public class EncryptUtil {
+public class CoreEncryptUtil {
 
 
     public static void main(String[] args) {
