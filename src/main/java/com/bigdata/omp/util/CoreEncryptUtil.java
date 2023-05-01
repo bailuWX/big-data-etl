@@ -6,7 +6,6 @@ import org.jasypt.util.text.BasicTextEncryptor;
 
 /***
  * 数据库密码,系统密码等重要的密码,需使用本工具进行脱敏加密.再到配置文件中填写
- * 切勿删除!!!!!!!
  */
 @Slf4j
 public class CoreEncryptUtil {
@@ -21,7 +20,7 @@ public class CoreEncryptUtil {
 
 
         //加密明文,可以自行设置
-        String password = "5541855";
+        String password = "123456";
         System.out.println("您设置的明文密码: " + password);
         String encrypt = standardPBEStringEncryptor.encrypt(password);
 
