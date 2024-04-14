@@ -115,6 +115,6 @@ CREATE TABLE `r_slave`  (
 -- Records of r_slave
 -- ----------------------------' ||
 
-INSERT INTO `r_slave` VALUES (24, '192.168.2.199_2345', '192.168.2.199', '8002', 'root', '5541855', NULL, NULL, NULL, NULL, 23, 'root', '5541855', NULL, '/opt', NULL, NULL, '2023-04-07 21:16:06');
+INSERT INTO `r_slave` VALUES (24, '192.168.2.199_22', '192.168.2.199', '8002', 'root', '123456', NULL, NULL, NULL, NULL, 23, 'root', '5541855', NULL, '/opt', NULL, NULL, '2023-04-07 21:16:06');
 
 SET FOREIGN_KEY_CHECKS = 1;
